@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: Example API
+  version: 1.0.0
+paths:
+  /netherlands/supermarkt:
+    get:
+      summary: Get supermarket details
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  heading:
+                    type: object
+                    properties:
+                      0:
+                        $ref: "#/components/schemas/Heading"
+                  storeLocator:
+                    type: object
+                    properties:
+                      0:
+                        $ref: "#/components/schemas/StoreLocator"
+
+components:
+  schemas:
+    Heading:
+      type: object
+      properties:
+        mgnl:template:
+          type: string
+          description: Template identifier for the heading component
+        headline:
+          type: object
+          properties:
+            props:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text of the headline
+                uppercase:
+                  type: boolean
+                  description: Whether the text should be in uppercase
+                styling:
+                  type: string
+                  description: Additional styling for the headline
+                variant:
+                  type: string
+                  description: The variant of the headline (e.g., h1, h2, etc.)
+                underline:
+                  type: boolean
+                  description: Whether the headline should be underlined
+              required:
+                - text
+                - uppercase
+                - styling
+                - variant
+                - underline
+    StoreLocator:
+      type: object
+      properties:
+        searchPlaceholder:
+          type: string
+          description: Placeholder text for the search input
+        cookieLabel:
+          type: string
+          description: Label for the cookie consent button
+        cookieBtnLabel:
+          type: string
+          description: Text for the cookie consent button
+        dataProtectionBtnLabel:
+          type: string
+          description: Text for the data protection button
+        noSearchResultDescription:
+          type: string
+          description: Description shown when no search results are found
+        statusOpensLabel:
+          type: string
+          description: Label for the opening status of a store
+        statusClosedLabel:
+          type: string
+          description: Label for when a store is closed
+        routeLabel:
+          type: string
+          description: Label for the route to the store
+        tabMapLabel:
+          type: string
+          description: Label for the map tab
+        noSearchResultLabel:
+          type: string
+          description: Label shown when no search results are found
+        searchResultLabel:
+          type: string
+          description: Label for found stores in search results
+        statusOpenSuffix:
+          type: string
+          description: Suffix for open status with time placeholder
+        statusOpenLabel:
+          type: string
+          description: Label for stores that are open until a certain time
+        filterLabel:
+          type: string
+          description: Label for filtering options in the store locator
+        tabListLabel:
+          type: string
+          description: Label for the list tab in the store locator
+        statusOpensSuffix:
+          type: string
+          description: Suffix for the opening time of a store
+        detailLabel:
+          type: string
+          description: Label for more information about a store
+        locationLabel:
+          type: string
+          description: Label for the location of a store
+        selectedLabel:
+          type: string
+          description: Label for the selected store in the locator
+        mgnl:template:
+          type: string
+          description: Template identifier for the store locator component
